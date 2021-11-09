@@ -18,6 +18,7 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
   .l-appBody {
-    padding-top: 5rem;
+    height: 100vh;
+    margin: 80px 0 20px 0;
   }
 </style>

@@ -1,0 +1,33 @@
+/**
+ * Breakpoint Settings
+ */
+
+// min or max
+$media-direction: min; // min / max — default is min (mobile first)
+
+$breakpoints: (
+  'phone-small': 320px,
+  'phone-md': 375px,
+  'phone': 412px,
+  'tablet': 640px,
+  'tablet-wide': 768px,
+  'desktop': 1024px,
+  'desktop-wide': 1280px
+) !default;
+
+/**
+ * Colors system
+ */
+$primary-color: #AA7AD0 !default;
+$secondary-color: #000000 !default;
+$error-color: #DA291C !default;
+$disabled-color: #B8BEC8 !default;
+$light-color: white !default;
+$body-color: #171614 !default;
+$link-color: $secondary-color;
+
+/**
+ * Font system
+ */
+
+$main-font: 'Lato-Regular', sans-serif;

@@ -1,0 +1,57 @@
+@use "assets/styles/abstracts/variables" as v;
+
+// Breakpoint
+@mixin bp($breakpoint,$direction: min) {
+
+  // It will check if the value is present in the Sass Map
+  @if map-has-key(v.$breakpoints, $breakpoint) {
+    // Output
+    @media (#{$direction}-width: #{map-get(v.$breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  // If you have entered a value above, check here if you have attached a unit. If not, px is used.
+  @else if unitless($breakpoint) {
+    // stylelint-disable-next-line length-zero-no-unit
+    $breakpoint: $breakpoint + 0px;
+
+    // Output
+    @media (#{$direction}-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+/* flex system */
+%d-flex { display: flex; }
+
+/* jc - justify-content */
+%jc-flex-start { justify-content: flex-start; }
+%jc-flex-end { justify-content: flex-end; }
+%jc-space-between { justify-content: space-between; }
+%jc-center { justify-content: center; }
+
+/* ai - align-items */
+%ai-center { align-items: center; }
+%ai-flex-start { align-items: flex-start; }
+
+@mixin d-flex($justify-content: false, $align-items: false, $is-column: false) {
+  @extend %d-flex;
+
+  flex-direction: if($is-column, column, row);
+  @if ($justify-content) {
+    @extend %jc-#{$justify-content};
+  }
+  @if ($align-items) {
+    @extend %ai-#{$align-items};
+  }
+}
+
+@mixin use-color($color: 'primary') {
+  color: #{$color};
+}
+
+@mixin use-bg-color($color: 'primary') {
+  background-color: #{$color};
+}

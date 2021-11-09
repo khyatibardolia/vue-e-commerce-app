@@ -1,15 +1,14 @@
 <template>
-  <main class="l-appBody">
-    <Products />
-  </main>
+  <div class="c-products">
+    product list
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import Products from './products/index.vue'
 
 @Component({
-  components: { Products },
+  layout: 'default',
 })
 export default class extends Vue {
 
@@ -17,7 +16,7 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  .l-appBody {
-    padding-top: 5rem;
-  }
+.c-products {
+  padding: 0;
+}
 </style>

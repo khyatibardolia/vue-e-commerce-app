@@ -19,12 +19,14 @@ $breakpoints: (
  * Colors system
  */
 $primary-color: #AA7AD0 !default;
+$primary-color-light: #D07ACD !default;
 $secondary-color: #000000 !default;
 $error-color: #DA291C !default;
 $disabled-color: #B8BEC8 !default;
 $light-color: white !default;
 $body-color: #171614 !default;
 $link-color: $secondary-color;
+$bg-grey: #414141 !default;
 
 /**
  * Font system

@@ -9,12 +9,12 @@
       <div class="c-appHeader__counter">
         <span class="-paddingRight">0.00</span>
         <NuxtLink
-          v-for="{component, path, count} in menuActions"
-          :key="component"
+          v-for="{icon, path, count} in menuActions"
+          :key="icon"
           :to="path"
           class="c-appHeader__icon"
         >
-          <component :is="component" />
+          <BaseIcon :name="icon" :size="20" />
           <span class="c-appHeader__iconBadge">{{ count }}</span>
         </NuxtLink>
       </div>
@@ -24,14 +24,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import WishlistIcon from '@/assets/svg-icons/wishlist.svg'
-import CartIcon from '@/assets/svg-icons/bag.svg'
 
-@Component({ components: { WishlistIcon, CartIcon } })
+@Component
 export default class extends Vue {
   private readonly menuActions = [
-    { path: '/', component: 'CartIcon', count: 0 },
-    { path: '/', component: 'WishlistIcon', count: 0 },
+    { path: '/', icon: 'bag', count: 0 },
+    { path: '/', icon: 'wishlist', count: 0 },
   ]
 }
 </script>

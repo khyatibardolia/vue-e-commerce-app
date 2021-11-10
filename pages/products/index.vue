@@ -37,7 +37,7 @@ export default class extends Vue {
 .c-products {
   padding: 0;
 
-  @include mx.bp('tablet-wide') {
+  @include mx.bp('desktop') {
     padding: 0 5rem;
   }
 
@@ -53,7 +53,7 @@ export default class extends Vue {
       grid-template-columns: auto auto;
     }
 
-    @include mx.bp('tablet-wide') {
+    @include mx.bp('desktop') {
       grid-template-columns: auto auto auto;
     }
   }

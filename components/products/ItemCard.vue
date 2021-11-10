@@ -1,16 +1,26 @@
 <template>
   <div class="c-productItems">
     <div class="c-productItems__card">
-      <img
-        src=""
-        alt="Avatar"
-        class="c-productItems__img"
-      >
-      <div class="c-productItems__content">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
+      <figure class="c-productItems__imgWrapper">
+        <img
+          src="https://via.placeholder.com/2048x2048"
+          alt="Avatar"
+          class="c-productItems__img"
+        >
+        <BaseButton icon="wishlist" class="c-productItems__wishlistBtn" />
+      </figure>
+      <div class="c-productItems__details">
+        <h1 class="c-productItems__title">
+          John Doe
+        </h1>
+        <p class="c-productItems__description">
+          Architect & Engineer
+        </p>
+        <div class="c-productItems__price">
+          <span class="c-productItems__price">10.00</span>
+        </div>
+        <BaseButton btn-label="Add to cart" full-width />
       </div>
-      <BaseButton btn-label="Add to cart" full-width />
     </div>
   </div>
 </template>
@@ -37,7 +47,6 @@ export default class extends Vue {
 
     transition: 0.3s;
 
-    border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
     &:hover {
@@ -45,12 +54,94 @@ export default class extends Vue {
     }
   }
 
+  &__imgWrapper {
+    position: relative;
+
+    padding: 20px;
+
+    text-align: center;
+  }
+
   &__img {
-    //position: absolute;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__wishlistBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 35px;
+    height: 35px;
+  }
+
+  &::v-deep .c-productItems__wishlistBtn {
+    background: v.$light-color;
+
+    .c-baseButton__icon {
+      margin: 0;
+
+      path {
+        fill: v.$disabled-color;
+      }
+    }
+
+    &:hover {
+      .c-baseButton__icon {
+        path {
+          fill: v.$primary-color;
+        }
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    padding: 10px 20px 20px;
+
+    text-align: center;
   }
 
   &__container {
     padding: 2px 16px;
+  }
+
+  &__title {
+    padding-bottom: 10px;
+
+    letter-spacing: 1.37px;
+    text-transform: uppercase;
+
+    font-family: 'Lato-Bold', sans-serif;
+    font-size: 14px;
+  }
+
+  &__description {
+    @include mx.use-color(v.$text-light);
+
+    padding-bottom: 10px;
+
+    letter-spacing: 0.43px;
+
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  &__price {
+    padding-bottom: 20px;
+
+    letter-spacing: 2.33px;
+
+    font-family: 'Lato-Bold', sans-serif;
+    font-size: 14px;
   }
 }
 </style>

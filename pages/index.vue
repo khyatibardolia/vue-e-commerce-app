@@ -24,7 +24,7 @@ export default class extends Vue {
   margin: 80px 20px;
 
   @include mx.bp('tablet-wide') {
-    height: 100vh;
+    height: 100%;
   }
 }
 </style>

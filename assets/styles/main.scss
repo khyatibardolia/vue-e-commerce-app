@@ -57,3 +57,16 @@ a {
     outline: 0;
   }
 }
+
+h1,
+p,
+figure {
+  margin: 0;
+
+  font-weight: normal;
+}
+
+button {
+  border: 0;
+  appearance: none;
+}

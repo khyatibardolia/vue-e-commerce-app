@@ -20,7 +20,7 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component
 export default class extends Vue {
-@Prop({ type: String, default: '', required: true }) private readonly btnLabel?: string
+@Prop({ type: String, default: '' }) private readonly btnLabel?: string
 @Prop({ type: String, default: '' }) private readonly icon?: string
 @Prop({ type: Boolean }) private readonly fullWidth?: string
 }
@@ -38,7 +38,7 @@ export default class extends Vue {
 
   cursor: pointer;
   letter-spacing: 1.39px;
-  text-transform: capitalize;
+  text-transform: uppercase;
 
   border: 1px solid v.$disabled-color;
   border-radius: 100px;

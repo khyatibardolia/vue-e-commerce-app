@@ -40,6 +40,7 @@ export default class extends Vue {
 
 .c-appHeader {
   position: fixed;
+  z-index: 99;
   top: 0;
 
   width: 100%;

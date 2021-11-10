@@ -17,8 +17,14 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  .l-appBody {
+@use "assets/styles/abstracts/mixins" as mx;
+
+.l-appBody {
+  height: auto;
+  margin: 80px 20px;
+
+  @include mx.bp('tablet-wide') {
     height: 100vh;
-    margin: 80px 0 20px 0;
   }
+}
 </style>

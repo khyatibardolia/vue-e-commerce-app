@@ -23,6 +23,9 @@ export default class extends Vue {
   @include mx.use-color(v.$light-color);
   @include mx.use-bg-color(v.$bg-grey);
 
+  position: relative;
+  bottom: 0;
+
   width: 100%;
   padding: 22px;
 

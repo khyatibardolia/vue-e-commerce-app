@@ -47,11 +47,23 @@ export default {
   axios: {
     proxy: true,
     baseURL: 'https://api.musement.com/api/v3',
-    common: {
-      'accept-language': 'it',
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      'x-musement-version': '3.4.0',
+    headers: {
+      common: {
+        'accept-language': 'it',
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'x-musement-version': '3.4.0',
+      },
+    },
+  },
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: 'https://api.musement.com/api/v3',
+    },
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: 'https://api.musement.com/api/v3',
     },
   },
 }

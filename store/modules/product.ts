@@ -18,9 +18,8 @@ export default class product extends VuexModule {
 
   @Action
   async getProducts () {
-    const res = await $axios.$get('https://api.musement.com/api/v3/venues/164/activities?limit=6&offset=0')
+    const res = await $axios.$get('/venues/164/activities?limit=6&offset=0')
 
-    console.log('called', res)
     this.context.commit(SET_PRODUCTS, res)
   }
 }

@@ -3,11 +3,11 @@
     <div class="c-products__list">
       <div class="c-products__gridContainer">
         <div
-          v-for="n in 6"
-          :key="n"
+          v-for="item in products"
+          :key="item.uuid"
           class="c-products__gridItem"
         >
-          <ItemCard />
+          <ItemCard :product="item" />
         </div>
       </div>
     </div>
@@ -19,14 +19,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { getModule } from 'vuex-module-decorators'
 import ItemCard from '@/components/products/ItemCard.vue'
+import product from '@/store/modules/product'
 
 @Component({
   components: { ItemCard },
   layout: 'default',
 })
 export default class extends Vue {
+  public store = getModule(product, this.$store)
 
+  get products (): Array<[]> {
+    return this.store.products
+  }
+
+  mounted () : void {
+    this.store.getProducts()
+  }
 }
 </script>
 
@@ -59,7 +69,7 @@ export default class extends Vue {
   }
 
   &__gridItem {
-    position: relative;
+    height: 100%;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="c-productItems__card">
       <figure class="c-productItems__imgWrapper">
         <img
-          src="https://via.placeholder.com/2048x2048"
+          :src="product.cover_image_url"
           alt="Avatar"
           class="c-productItems__img"
         >
@@ -11,13 +11,13 @@
       </figure>
       <div class="c-productItems__details">
         <h1 class="c-productItems__title">
-          John Doe
+          {{ product.title }}
         </h1>
         <p class="c-productItems__description">
-          Architect & Engineer
+          {{ product.description }}
         </p>
         <div class="c-productItems__price">
-          <span class="c-productItems__price">10.00</span>
+          <span class="c-productItems__price">{{ product.retail_price.formatted_value }}</span>
         </div>
         <BaseButton btn-label="Add to cart" full-width />
       </div>
@@ -26,10 +26,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class extends Vue {
+  @Prop({ type: Object, default: () => {} }) private readonly product?: string
 }
 </script>
 
@@ -39,10 +40,12 @@ export default class extends Vue {
 
 .c-productItems {
   width: 100%;
+  height: 100%;
 
   &__card {
     position: relative;
 
+    height: 100%;
     padding: 10px;
 
     transition: 0.3s;

@@ -23,7 +23,7 @@ export default {
   css: [ '@/assets/styles/main.scss' ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [ '~/plugins/global-components' ],
+  plugins: [ '~/plugins/global-components', '~/plugins/axios-accessor' ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,9 +37,21 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [ 'nuxt-svg-loader' ],
+  modules: [ 'nuxt-svg-loader', '@nuxtjs/axios' ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  // Axios Configuration: https://axios.nuxtjs.org/options/
+  axios: {
+    proxy: true,
+    baseURL: 'https://api.musement.com/api/v3',
+    common: {
+      'accept-language': 'it',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'x-musement-version': '3.4.0',
+    },
   },
 }

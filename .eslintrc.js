@@ -30,6 +30,7 @@ module.exports = {
       'always',
       {
         js: 'never',
+        ts: 'never',
       },
     ],
     'import/newline-after-import': [ 2, { count: 1 } ],

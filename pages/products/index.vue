@@ -21,13 +21,14 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import ItemCard from '@/components/products/ItemCard.vue'
 import { productModule } from '@/store'
+import ProductModel from "@/interfaces/productModel";
 
 @Component({
   components: { ItemCard },
   layout: 'default',
 })
 export default class extends Vue {
-  get products (): Array<[]> {
+  get products (): Array<ProductModel> {
     return productModule.products
   }
 

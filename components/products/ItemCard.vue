@@ -32,10 +32,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import ProductModel from '@/interfaces/productModel'
 
 @Component
 export default class extends Vue {
-  @Prop({ type: Object, default: () => {} }) private readonly product?: string
+  @Prop({ type: Object, default: () => {} }) private readonly product?: ProductModel
 }
 </script>
 

@@ -64,15 +64,8 @@ export default class extends Vue {
   }
 
   handleCart () : void {
-    const isOnCart = this.isOnCart
-
-    // Use the store to check if the item is on the cart
-    cartModule.setCartItems(isOnCart
-    // If it is on cart remove it
-      ? cartModule.cart.filter((product: { uuid: string }) => product.uuid !== this.product.uuid)
-    // If not add it to the Array of Objects
-      : [ ...cartModule.cart, { ...this.product } ],
-    )
+    // add item to cart
+    cartModule.setCartItems([ ...cartModule.cart, { ...this.product } ])
   }
 
   handleWishlist () : void {

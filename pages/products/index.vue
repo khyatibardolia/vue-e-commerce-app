@@ -41,10 +41,10 @@ export default class extends Vue {
 @use "../../assets/styles/abstracts/mixins" as mx;
 
 .c-products {
-  padding: 0;
+  padding: 3rem 1.5rem;
 
   @include mx.break-point('desktop') {
-    padding: 0 5rem;
+    padding: 3rem 5rem;
   }
 
   &__gridContainer {

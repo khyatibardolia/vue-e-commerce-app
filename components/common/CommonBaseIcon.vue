@@ -1,13 +1,15 @@
 <template>
-  <component
-    :is="component"
-    class="c-baseIcon"
-    :aria-labelledby="name"
-    :height="size"
-    :view-box="viewBox"
-    :fill="fillColor"
-    :stroke="color"
-  />
+  <span v-bind="$attrs">
+    <component
+      :is="component"
+      class="c-baseIcon"
+      :aria-labelledby="name"
+      :height="size"
+      :view-box="viewBox"
+      :fill="fillColor"
+      :stroke="color"
+    />
+  </span>
 </template>
 
 <script lang="ts">

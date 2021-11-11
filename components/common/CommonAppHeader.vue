@@ -9,7 +9,7 @@
       <div class="c-appHeader__counter">
         <span class="-paddingRight">{{ cartTotalAmt }}</span>
         <NuxtLink
-          to="/"
+          to="/cart"
           class="c-appHeader__icon"
         >
           <common-base-icon name="bag" :size="20" />

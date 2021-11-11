@@ -7,7 +7,11 @@
           alt="Avatar"
           class="c-productItems__img"
         >
-        <common-base-button icon="wishlist" class="c-productItems__wishlistBtn" />
+        <common-base-button
+          icon="wishlist"
+          :class="['c-productItems__wishlistBtn', toggleWishlist ? '-isSelected' : '']"
+          @click.native="handleWishlist"
+        />
       </figure>
       <div class="c-productItems__details">
         <h1 class="c-productItems__title">
@@ -39,11 +43,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import ProductModel from '@/interfaces/productModel'
-import { cartModule } from '@/store'
+import { cartModule, wishListModule } from '@/store'
 
 @Component
 export default class extends Vue {
   @Prop({ type: Object, default: () => {} }) private readonly product: ProductModel | any
+
+  private toggleWishlist: boolean = false
 
   get isOnCart (): boolean {
     const { uuid } = this.product
@@ -51,7 +57,13 @@ export default class extends Vue {
     return cartModule.isOnCart(uuid)
   }
 
-  handleCart () {
+  get isOnWishList (): boolean {
+    const { uuid } = this.product
+
+    return wishListModule.isOnWishlist(uuid)
+  }
+
+  handleCart () : void {
     const isOnCart = this.isOnCart
 
     // Use the store to check if the item is on the cart
@@ -60,6 +72,21 @@ export default class extends Vue {
       ? cartModule.cart.filter((product: { uuid: string }) => product.uuid !== this.product.uuid)
     // If not add it to the Array of Objects
       : [ ...cartModule.cart, { ...this.product } ],
+    )
+  }
+
+  handleWishlist () : void {
+    this.toggleWishlist = !this.toggleWishlist
+    // Use the store to check if the item is on the wishlist
+    const isOnWishlist = this.isOnWishList
+
+    wishListModule.setWishlistItems(
+      isOnWishlist
+        // If it is on wishlist remove it
+        ? wishListModule.wishlist
+          .filter((product: { uuid: string }) => product.uuid !== this.product.uuid)
+        // If not add it to the Array of Objects
+        : [ ...wishListModule.wishlist, { ...this.product } ],
     )
   }
 }
@@ -133,7 +160,8 @@ export default class extends Vue {
       }
     }
 
-    &:hover {
+    &:hover,
+    &.-isSelected {
       .c-baseButton__icon {
         path {
           fill: v.$primary-color;

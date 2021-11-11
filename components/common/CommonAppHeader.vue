@@ -20,7 +20,7 @@
           class="c-appHeader__icon"
         >
           <common-base-icon name="wishlist" :size="20" />
-          <span class="c-appHeader__iconBadge">0</span>
+          <span class="c-appHeader__iconBadge">{{ wishlistItemsCount }}</span>
         </NuxtLink>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { cartModule } from '@/store'
+import { cartModule, wishListModule } from '@/store'
 
 @Component
 export default class extends Vue {
@@ -39,6 +39,10 @@ export default class extends Vue {
 
   get cartTotalAmt (): string {
     return cartModule.totalPrice
+  }
+
+  get wishlistItemsCount (): number {
+    return wishListModule.wishlistCount
   }
 }
 </script>

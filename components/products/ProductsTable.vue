@@ -38,7 +38,7 @@
       </table>
       <div class="c-productsTable__totalWrapper">
         <div class="c-productsTable__totalText">
-          Cart SubTotal
+          Subtotal
         </div>
         <div class="c-productsTable__subTotal">
           {{ total }}
@@ -47,7 +47,7 @@
     </div>
     <div v-else class="c-productsTable__emptyCartWrapper">
       <div class="c-productsTable__emptyCart">
-        Your Cart is empty
+        {{ emptyBagText }}
       </div>
       <common-base-button
         btn-label="Continue Shopping"
@@ -64,7 +64,8 @@ import ProductModel from '@/interfaces/productModel'
 @Component
 export default class extends Vue {
   @Prop({ type: Array, default: () => [] }) private readonly products!: Array<ProductModel>
-  @Prop({ type: String, default: '' }) private readonly total!: number
+  @Prop({ type: String, default: '' }) private readonly total!: string
+  @Prop({ type: String, default: '' }) private readonly emptyBagText!: string
 
   @Emit('handle-click')
   click (value: any) {

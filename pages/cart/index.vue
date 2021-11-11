@@ -5,6 +5,7 @@
       <products-table
         :products="products"
         :total="cartTotalAmt"
+        empty-bag-text="Your Cart is empty"
         @handle-click="handleClick"
       />
     </div>

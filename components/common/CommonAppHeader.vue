@@ -2,7 +2,7 @@
   <header class="c-appHeader">
     <div class="c-appHeader__container">
       <h1 class="c-appHeader__logo">
-        <NuxtLink to="/">
+        <NuxtLink to="/products">
           <span>The Plaza</span>
         </NuxtLink>
       </h1>
@@ -16,7 +16,7 @@
           <span class="c-appHeader__iconBadge">{{ cartItemsCount }}</span>
         </NuxtLink>
         <NuxtLink
-          to="/"
+          to="/wishlist"
           class="c-appHeader__icon"
         >
           <common-base-icon name="wishlist" :size="20" />

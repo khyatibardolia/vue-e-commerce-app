@@ -27,4 +27,19 @@ export default class loader extends VuexModule {
   get isOnWishlist (): (value: string) => boolean {
     return (value: string) => this.wishlist.some(({ uuid }) => uuid === value)
   }
+
+  get wishlistTotalAmount (): string {
+    // eslint-disable-next-line camelcase
+    const total = this.wishlist.map(({ retail_price }) => retail_price.value)
+
+    return total.reduce((a, b) => a + b, 0).toFixed(2)
+  }
+
+  get wishlistTotalAmountFormatted (): string {
+    return `€ ${this.wishlistTotalAmount}`
+  }
+
+  get totalPrice (): string {
+    return Number(this.wishlistTotalAmount) > 0 ? this.wishlistTotalAmountFormatted : ''
+  }
 }

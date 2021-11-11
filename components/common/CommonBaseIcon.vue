@@ -1,8 +1,7 @@
 <template>
-  <span v-bind="$attrs">
+  <span v-bind="$attrs" class="c-baseIcon__wrapper">
     <component
       :is="component"
-      class="c-baseIcon"
       :aria-labelledby="name"
       :height="size"
       :view-box="viewBox"
@@ -38,9 +37,9 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  .c-baseIcon {
-    svg {
-      transition: all 0.5s ease;
-    }
-  }
+@use "assets/styles/abstracts/mixins" as mx;
+
+.c-baseIcon__wrapper {
+  @include mx.d-flex();
+}
 </style>

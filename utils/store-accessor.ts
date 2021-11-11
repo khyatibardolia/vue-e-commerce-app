@@ -5,8 +5,8 @@ into the actual stores, and then re-export them. */
 
 import { Store } from 'vuex'
 import { getModule } from 'vuex-module-decorators'
-import product from '@/store/modules/product'
-import loader from '@/store/modules/loader'
+import product from '@/store/product'
+import loader from '@/store/loader'
 
 /* Each store is the singleton instance of its module class
 Use these -- they have methods for state/getters/mutations/actions

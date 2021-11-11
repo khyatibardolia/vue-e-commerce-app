@@ -2,7 +2,7 @@ import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { SET_LOADER } from '@/store/mutation-types'
 
 @Module({
-  name: 'modules/loader',
+  name: 'loader',
   namespaced: true,
   stateFactory: true,
 })

@@ -14,7 +14,7 @@
           :to="path"
           class="c-appHeader__icon"
         >
-          <BaseIcon :name="icon" :size="20" />
+          <common-base-icon :name="icon" :size="20" />
           <span class="c-appHeader__iconBadge">{{ count }}</span>
         </NuxtLink>
       </div>

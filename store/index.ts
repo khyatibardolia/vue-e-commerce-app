@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import Vuex, { Store } from 'vuex'
 // Note: you shouldn't need to import store modules here.
-import { initializeStores } from '@/store/utils/store-accessor'
+import { initializeStores } from '@/utils/store-accessor'
 
 Vue.use(Vuex)
 
@@ -14,4 +14,4 @@ Vue.use(Vuex)
 const initializer = (store: Store<any>) => initializeStores(store)
 
 export const plugins = [ initializer ]
-export * from '@/store/utils/store-accessor'
+export * from '@/utils/store-accessor'

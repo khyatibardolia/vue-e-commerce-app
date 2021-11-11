@@ -7,7 +7,7 @@
           alt="Avatar"
           class="c-productItems__img"
         >
-        <BaseButton icon="wishlist" class="c-productItems__wishlistBtn" />
+        <common-base-button icon="wishlist" class="c-productItems__wishlistBtn" />
       </figure>
       <div class="c-productItems__details">
         <h1 class="c-productItems__title">
@@ -24,7 +24,7 @@
           </span>
           <span>{{ product.retail_price.formatted_value }}</span>
         </div>
-        <BaseButton btn-label="Add to cart" full-width />
+        <common-base-button btn-label="Add to cart" full-width />
       </div>
     </div>
   </div>

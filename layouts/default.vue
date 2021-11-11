@@ -1,22 +1,19 @@
 <template>
   <div class="l-default">
-    <AppHeader />
-    <Loader v-if="isLoading" />
-    <Nuxt />
-    <AppFooter />
+    <common-app-header />
+    <main class="l-default__main">
+      <common-loader v-if="isLoading" />
+      <Nuxt />
+    </main>
+    <common-app-footer />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import AppHeader from '@/components/common/AppHeader.vue'
-import AppFooter from '@/components/common/AppFooter.vue'
-import Loader from '@/components/common/Loader.vue'
 import { loaderModule } from '@/store'
 
-@Component({
-  components: { Loader, AppHeader, AppFooter },
-})
+@Component
 export default class extends Vue {
   get isLoading (): boolean {
     return loaderModule.showLoader
@@ -26,6 +23,8 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
 .l-default {
-  padding: 0;
+  &__main {
+    margin: 80px 20px 20px 20px;
+  }
 }
 </style>

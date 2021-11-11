@@ -4,7 +4,7 @@
     v-bind="$attrs"
   >
     <span class="c-baseButton__span">
-      <BaseIcon
+      <common-base-icon
         v-if="icon"
         class="c-baseButton__icon"
         :name="icon"
@@ -20,9 +20,9 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component
 export default class extends Vue {
-@Prop({ type: String, default: '' }) private readonly btnLabel?: string
-@Prop({ type: String, default: '' }) private readonly icon?: string
-@Prop({ type: Boolean }) private readonly fullWidth?: string
+  @Prop({ type: String, default: '' }) private readonly btnLabel!: string
+  @Prop({ type: String, default: '' }) private readonly icon!: string
+  @Prop({ type: Boolean }) private readonly fullWidth?: string
 }
 </script>
 

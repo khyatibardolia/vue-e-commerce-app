@@ -1,21 +1,21 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { SET_PRODUCTS } from '@/store/mutation-types'
-import { $axios } from '@/store/utils/api'
-import { loaderModule } from '@/store'
+import { $axios } from '@/utils/api'
+import { loaderModule } from '@/store/index'
 import ProductModel from '@/interfaces/productModel'
 
 @Module({
-  name: 'modules/product',
+  name: 'product',
   namespaced: true,
   stateFactory: true,
 })
 export default class product extends VuexModule {
-   products: Array<ProductModel> = []
+  products: Array<ProductModel> = []
 
   @Mutation
-   public [SET_PRODUCTS] (payload: Array<ProductModel>): void {
-     this.products = payload
-   }
+  public [SET_PRODUCTS] (payload: Array<ProductModel>): void {
+    this.products = payload
+  }
 
   @Action
   public async getProducts () {

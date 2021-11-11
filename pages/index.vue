@@ -1,25 +1,17 @@
 <template>
-  <main class="l-appBody">
-    <Products />
-  </main>
+  <Products />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import Products from './products/index.vue'
+import Products from './products'
 
 @Component({
   components: { Products },
 })
 export default class extends Vue {
-
+  created () : void {
+    this.$router.push('/products')
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-@use "assets/styles/abstracts/mixins" as mx;
-
-.l-appBody {
-  margin: 80px 20px;
-}
-</style>

@@ -1,30 +1,28 @@
 <template>
   <div class="c-products">
-    <div class="c-products__list">
+    <div v-if="products.length" class="c-products__list">
       <div class="c-products__gridContainer">
         <div
           v-for="item in products"
           :key="item.uuid"
           class="c-products__gridItem"
         >
-          <ItemCard :product="item" />
+          <products-item-card :product="item" />
         </div>
       </div>
-    </div>
-    <div class="c-products__pagination">
-      pagination
+      <div class="c-products__pagination">
+        <products-pagination />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ItemCard from '@/components/products/ItemCard.vue'
 import { productModule } from '@/store'
-import ProductModel from "@/interfaces/productModel";
+import ProductModel from '@/interfaces/productModel'
 
 @Component({
-  components: { ItemCard },
   layout: 'default',
 })
 export default class extends Vue {
@@ -39,8 +37,8 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@use "assets/styles/abstracts/variables" as v;
-@use "assets/styles/abstracts/mixins" as mx;
+@use "../../assets/styles/abstracts/variables" as v;
+@use "../../assets/styles/abstracts/mixins" as mx;
 
 .c-products {
   padding: 0;
@@ -68,6 +66,12 @@ export default class extends Vue {
 
   &__gridItem {
     height: 100%;
+  }
+
+  &__pagination {
+    @include mx.d-flex(center, center, false);
+
+    padding-top: 2rem;
   }
 }
 </style>

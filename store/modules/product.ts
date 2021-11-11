@@ -1,7 +1,7 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { SET_PRODUCTS } from '@/store/mutation-types'
 import { $axios } from '@/store/utils/api'
-import { loaderModule } from '@/store/store-accessor'
+import { loaderModule } from '@/store'
 import ProductModel from '@/interfaces/productModel'
 
 @Module({

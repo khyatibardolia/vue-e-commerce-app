@@ -7,15 +7,20 @@
         </NuxtLink>
       </h1>
       <div class="c-appHeader__counter">
-        <span class="-paddingRight">0.00</span>
+        <span class="-paddingRight">{{ cartTotalAmt }}</span>
         <NuxtLink
-          v-for="{icon, path, count} in menuActions"
-          :key="icon"
-          :to="path"
+          to="/"
           class="c-appHeader__icon"
         >
-          <common-base-icon :name="icon" :size="20" />
-          <span class="c-appHeader__iconBadge">{{ count }}</span>
+          <common-base-icon name="bag" :size="20" />
+          <span class="c-appHeader__iconBadge">{{ cartItemsCount }}</span>
+        </NuxtLink>
+        <NuxtLink
+          to="/"
+          class="c-appHeader__icon"
+        >
+          <common-base-icon name="wishlist" :size="20" />
+          <span class="c-appHeader__iconBadge">0</span>
         </NuxtLink>
       </div>
     </div>
@@ -24,13 +29,17 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { cartModule } from '@/store'
 
 @Component
 export default class extends Vue {
-  private readonly menuActions = [
-    { path: '/', icon: 'bag', count: 0 },
-    { path: '/', icon: 'wishlist', count: 0 },
-  ]
+  get cartItemsCount (): number {
+    return cartModule.cartCount
+  }
+
+  get cartTotalAmt (): string {
+    return cartModule.totalPrice
+  }
 }
 </script>
 

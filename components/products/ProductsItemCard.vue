@@ -24,7 +24,13 @@
           </span>
           <span>{{ product.retail_price.formatted_value }}</span>
         </div>
-        <common-base-button btn-label="Add to cart" full-width />
+        <common-base-button
+          :btn-label="!isOnCart ? 'Add to cart' : 'In Cart'"
+          full-width
+          :disable="isOnCart"
+          :class="isOnCart ? '-disableBtn' : ''"
+          @click.native="handleCart"
+        />
       </div>
     </div>
   </div>
@@ -33,10 +39,29 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import ProductModel from '@/interfaces/productModel'
+import { cartModule } from '@/store'
 
 @Component
 export default class extends Vue {
-  @Prop({ type: Object, default: () => {} }) private readonly product?: ProductModel
+  @Prop({ type: Object, default: () => {} }) private readonly product: ProductModel | any
+
+  get isOnCart (): boolean {
+    const { uuid } = this.product
+
+    return cartModule.isOnCart(uuid)
+  }
+
+  handleCart () {
+    const isOnCart = this.isOnCart
+
+    // Use the store to check if the item is on the cart
+    cartModule.setCartItems(isOnCart
+    // If it is on cart remove it
+      ? cartModule.cart.filter((product: { uuid: string }) => product.uuid !== this.product.uuid)
+    // If not add it to the Array of Objects
+      : [ ...cartModule.cart, { ...this.product } ],
+    )
+  }
 }
 </script>
 
@@ -115,6 +140,12 @@ export default class extends Vue {
         }
       }
     }
+  }
+
+  .-disableBtn {
+    pointer-events: none;
+    @include mx.use-bg-color(v.$disabled-color);
+    @include mx.use-color(v.$light-color);
   }
 
   &__details {

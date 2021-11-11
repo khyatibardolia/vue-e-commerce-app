@@ -19,23 +19,20 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { getModule } from 'vuex-module-decorators'
 import ItemCard from '@/components/products/ItemCard.vue'
-import product from '@/store/modules/product'
+import { productModule } from '@/store'
 
 @Component({
   components: { ItemCard },
   layout: 'default',
 })
 export default class extends Vue {
-  public store = getModule(product, this.$store)
-
   get products (): Array<[]> {
-    return this.store.products
+    return productModule.products
   }
 
   mounted () : void {
-    this.store.getProducts()
+    productModule.getProducts()
   }
 }
 </script>

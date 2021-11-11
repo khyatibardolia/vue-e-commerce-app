@@ -16,8 +16,13 @@
         <p class="c-productItems__description">
           {{ product.description }}
         </p>
+      </div>
+      <div class="c-productItems__price">
         <div class="c-productItems__price">
-          <span class="c-productItems__price">{{ product.retail_price.formatted_value }}</span>
+          <span class="c-productItems__priceStrike">
+            {{ product.discount > 0 ? product.net_price && product.net_price.formatted_value : '' }}
+          </span>
+          <span>{{ product.retail_price.formatted_value }}</span>
         </div>
         <BaseButton btn-label="Add to cart" full-width />
       </div>
@@ -43,7 +48,7 @@ export default class extends Vue {
   height: 100%;
 
   &__card {
-    position: relative;
+    @include mx.d-flex('space-between', center, true);
 
     height: 100%;
     padding: 10px;
@@ -60,14 +65,22 @@ export default class extends Vue {
   &__imgWrapper {
     position: relative;
 
+    display: flex;
+    overflow: hidden;
+
+    width: 100%;
+    height: 250px;
     padding: 20px;
 
     text-align: center;
   }
 
   &__img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   &__wishlistBtn {
@@ -139,12 +152,20 @@ export default class extends Vue {
   }
 
   &__price {
+    width: 100%;
     padding-bottom: 20px;
 
+    text-align: center;
     letter-spacing: 2.33px;
 
     font-family: 'Lato-Bold', sans-serif;
     font-size: 14px;
+  }
+
+  &__priceStrike {
+    margin-right: 10px;
+
+    text-decoration: line-through;
   }
 }
 </style>

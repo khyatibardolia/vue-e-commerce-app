@@ -1,7 +1,7 @@
 @use "assets/styles/abstracts/variables" as v;
 
 // Breakpoint
-@mixin bp($breakpoint,$direction: min) {
+@mixin break-point($breakpoint,$direction: min) {
 
   // It will check if the value is present in the Sass Map
   @if map-has-key(v.$breakpoints, $breakpoint) {

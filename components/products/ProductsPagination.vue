@@ -64,7 +64,7 @@ export default class ProductsPagination extends Vue {
     color: v.$body-color;
 
     font-size: 12px;
-    @include mx.bp('phone-md') {
+    @include mx.break-point('phone-md') {
       width: 30px;
     }
   }
@@ -81,7 +81,7 @@ export default class ProductsPagination extends Vue {
     text-decoration: none;
 
     color: v.$primary-color;
-    @include mx.bp('phone-md') {
+    @include mx.break-point('phone-md') {
       width: 30px;
       height: 30px;
     }

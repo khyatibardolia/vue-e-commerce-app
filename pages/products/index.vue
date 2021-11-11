@@ -43,7 +43,7 @@ export default class extends Vue {
 .c-products {
   padding: 0;
 
-  @include mx.bp('desktop') {
+  @include mx.break-point('desktop') {
     padding: 0 5rem;
   }
 
@@ -55,11 +55,11 @@ export default class extends Vue {
     column-gap: 20px;
     row-gap: 20px;
 
-    @include mx.bp('tablet') {
+    @include mx.break-point('tablet') {
       grid-template-columns: auto auto;
     }
 
-    @include mx.bp('desktop') {
+    @include mx.break-point('desktop') {
       grid-template-columns: auto auto auto;
     }
   }

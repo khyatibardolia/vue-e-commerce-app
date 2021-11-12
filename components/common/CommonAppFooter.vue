@@ -11,7 +11,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class extends Vue {
-  private readonly currentYear = new Date().getFullYear();
+  private readonly currentYear: number = new Date().getFullYear();
 }
 </script>
 

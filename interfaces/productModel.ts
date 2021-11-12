@@ -4,8 +4,8 @@ export default interface ProductModel {
   cover_image_url: string,
   title: string,
   description: string,
-  net_price: any,
-  retail_price: any,
-  discount: any,
+  net_price: { value: number, formatted_value: string},
+  retail_price: { value: number, formatted_value: string},
+  discount: number,
 }
 

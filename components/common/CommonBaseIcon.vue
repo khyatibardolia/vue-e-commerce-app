@@ -1,5 +1,5 @@
 <template>
-  <span v-bind="$attrs" class="c-baseIcon__wrapper">
+  <span v-bind="$attrs" class="c-baseIcon">
     <component
       :is="component"
       :aria-labelledby="name"
@@ -39,7 +39,7 @@ export default class extends Vue {
 <style lang="scss" scoped>
 @use "assets/styles/abstracts/mixins" as mx;
 
-.c-baseIcon__wrapper {
+.c-baseIcon {
   @include mx.d-flex();
 }
 </style>

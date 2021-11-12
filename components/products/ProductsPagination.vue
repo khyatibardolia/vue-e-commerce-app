@@ -5,23 +5,24 @@
       <li class="c-pagination__item">
         <NuxtLink
           class="c-pagination__link"
-          to="/"
+          :to="`/products/${prevPage}`"
         >
           <common-base-icon name="arrow-left" :size="20" />
         </NuxtLink>
       </li>
       <!-- Page Numbers -->
-      <li v-for="n in 6" :key="n" class="c-pagination__item">
+      <li v-for="n in pageNumbers" :key="n" class="c-pagination__item">
         <NuxtLink
-          to="/"
-          class="c-pagination__link"
+          :to="`/products/${n}`"
+          :class="['c-pagination__link',
+                   Number(n) === Number($route.params.slug || 1) ? '-isActive' : '']"
           v-text="n"
         />
       </li>
       <!-- Next Arrow -->
       <li class="c-pagination__item">
         <NuxtLink
-          to="/"
+          :to="`/products/${nextPage}`"
           class="c-pagination__link"
         >
           <common-base-icon name="arrow-right" :size="20" />
@@ -31,11 +32,44 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { productModule } from '~/utils/store-accessor'
 
 @Component
 export default class ProductsPagination extends Vue {
+  private readonly productPerPage = 6;
+  private pageNumbers: Array<number> = [];
+
+  getPageNumbers () {
+    if (productModule.productsCount > 0) {
+      // eslint-disable-next-line max-len
+      for (let i: number = 1; i <= Math.ceil(productModule.productsCount / this.productPerPage); i++) {
+        this.pageNumbers.push(i)
+      }
+    }
+  }
+
+  get prevPage (): number {
+    return this.$route.params.slug === '0' ? 0 : Number(this.$route.params.slug) - 1
+  }
+
+  get nextPage (): number {
+    const paramsPage = Number(this.$route.params.slug)
+
+    return paramsPage < productModule.productsCount
+      ? paramsPage + 1
+      : productModule.productsCount
+  }
+
+  async getProductsCount () {
+    await productModule.getProductsCount()
+    this.getPageNumbers()
+  }
+
+  mounted () : void {
+    this.getProductsCount()
+  }
 }
 </script>
 
@@ -79,11 +113,16 @@ export default class ProductsPagination extends Vue {
 
     transition: color ease 300ms;
     text-decoration: none;
+    @include mx.use-color(v.$primary-color);
 
-    color: v.$primary-color;
     @include mx.break-point('phone-md') {
       width: 30px;
       height: 30px;
+    }
+
+    &.-isActive {
+      @include mx.use-color(v.$light-color);
+      @include mx.use-bg-color(v.$primary-color);
     }
   }
 }

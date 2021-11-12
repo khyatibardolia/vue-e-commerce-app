@@ -10,8 +10,5 @@ import Products from './products/index.vue'
   components: { Products },
 })
 export default class extends Vue {
-  created () : void {
-    this.$router.push('/products')
-  }
 }
 </script>

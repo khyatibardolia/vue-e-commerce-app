@@ -24,13 +24,15 @@ export default class product extends VuexModule {
   }
 
   @Action
-  public async getProducts (pageLimit: number, offset: number) {
+  public async getProducts (payload: { limit: number, offset: number }) {
+    const { limit, offset } = payload
+
     loaderModule.setLoader(true)
     try {
       const response: Array<ProductModel> =
         await $axios.$get('/venues/164/activities?', {
           params: {
-            limit: pageLimit,
+            limit,
             offset,
           },
         })

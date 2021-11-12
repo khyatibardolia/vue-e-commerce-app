@@ -37,14 +37,11 @@ export default class ProductsList extends Vue {
     this.getProducts()
   }
 
-  async getProducts () {
-    if (typeof this.$route.params.slug !== 'undefined') {
+  getProducts () {
+    if (this.$route.params.slug !== undefined) {
       this.offset = Number(this.$route.params.slug) * Number(this.pageLimit)
-    } else {
-      this.offset = 0
     }
-
-    await productModule.getProducts(this.pageLimit, this.offset)
+    productModule.getProducts({ limit: this.pageLimit, offset: this.offset })
   }
 
   mounted () : void {

@@ -8,6 +8,7 @@
           class="c-productItems__img"
         >
         <common-base-button
+          id="addToWishlistBtn"
           icon="wishlist"
           :class="['c-productItems__wishlistBtn', toggleWishlist ? '-isSelected' : '']"
           @click.native="handleWishlist"
@@ -29,6 +30,7 @@
           <span>{{ product.retail_price.formatted_value }}</span>
         </div>
         <common-base-button
+          id="addToCartBtn"
           :btn-label="!isOnCart ? 'Add to cart' : 'In Cart'"
           full-width
           :disable="isOnCart"

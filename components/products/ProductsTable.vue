@@ -27,6 +27,7 @@
             </td>
             <td class="c-productsTable__td">
               <common-base-icon
+                id="removeItem"
                 name="remove"
                 :size="30"
                 class="c-productsTable__removeIcon"

@@ -15,7 +15,7 @@
         <NuxtLink
           :to="`/products/${n}`"
           :class="['c-pagination__link',
-                   Number(n) === Number($route.params.slug || 1) ? '-isActive' : '']"
+                   Number(n) === (slug || 1) ? '-isActive' : '']"
           v-text="n"
         />
       </li>
@@ -33,33 +33,41 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
-import { productModule } from '~/utils/store-accessor'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
+import { productModule } from '@/utils/store-accessor'
 
 @Component
 export default class ProductsPagination extends Vue {
   private readonly productPerPage = 6;
-  private pageNumbers: Array<number> = [];
+  private pageNumbers: number = 0;
+  private slug: number = 0
 
   getPageNumbers () {
     if (productModule.productsCount > 0) {
-      // eslint-disable-next-line max-len
-      for (let i: number = 1; i <= Math.ceil(productModule.productsCount / this.productPerPage); i++) {
-        this.pageNumbers.push(i)
-      }
+      this.pageNumbers = Math.floor(productModule.productsCount / this.productPerPage)
     }
   }
 
   get prevPage (): number {
-    return this.$route.params.slug === '0' ? 0 : Number(this.$route.params.slug) - 1
+    return this.slug !== 0 ? Number(this.slug) - 1 : 0
+  }
+
+  @Watch('slug')
+  // call again the method if the route changes
+  private onSlugChange () {
+    this.getSlugValue()
   }
 
   get nextPage (): number {
-    const paramsPage = Number(this.$route.params.slug)
-
-    return paramsPage < productModule.productsCount
-      ? paramsPage + 1
+    return this.slug < productModule.productsCount
+      ? this.slug + 1
       : productModule.productsCount
+  }
+
+  getSlugValue (): void {
+    if (this.$route.params.slug !== undefined) {
+      this.slug = Number(this.$route.params.slug)
+    }
   }
 
   async getProductsCount () {
@@ -69,6 +77,7 @@ export default class ProductsPagination extends Vue {
 
   mounted () : void {
     this.getProductsCount()
+    this.getSlugValue()
   }
 }
 </script>

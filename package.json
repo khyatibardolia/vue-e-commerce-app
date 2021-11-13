@@ -12,7 +12,9 @@
     "lint:style": "stylelint \"**/*.{vue,scss}\" --ignore-path .gitignore",
     "lint:style:fix": "stylelint \"**/*.{vue,scss}\" --fix --ignore-path .gitignore",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "husky": {
     "hooks": {
@@ -41,6 +43,8 @@
     "@babel/eslint-parser": "^7.14.7",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@cypress/vue": "^2.2.3",
+    "@cypress/webpack-dev-server": "^1.7.0",
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
@@ -49,9 +53,11 @@
     "@vue/test-utils": "^1.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.0.5",
+    "cypress": "^9.0.0",
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
+    "html-webpack-plugin": "^4.5.2",
     "husky": "^6.0.0",
     "jest": "^27.0.5",
     "sass": "^1.43.4",

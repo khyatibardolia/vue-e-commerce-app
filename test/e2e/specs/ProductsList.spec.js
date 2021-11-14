@@ -13,12 +13,12 @@ describe('app loads ok', () => {
   })
 
   it('Should add the first product to the wishlist', () => {
-    cy.get('#addToWishlistBtn').click({ force: true })
+    cy.get('#addToWishlistBtn').wait(500).click({ force: true })
       .should('contain.class', '-isSelected')
   })
 
   it('Should remove the first product from the wishlist', () => {
-    cy.get('#addToWishlistBtn').dblclick({ force: true })
+    cy.get('#addToWishlistBtn').wait(500).dblclick({ force: true })
       .should('not.contain.class', '-isSelected')
   })
 })

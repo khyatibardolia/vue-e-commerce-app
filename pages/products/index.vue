@@ -11,5 +11,8 @@ import ProductsList from './_slug.vue'
   components: { ProductsList },
 })
 export default class Products extends Vue {
+  created () : void {
+    this.$route.params.slug = '1'
+  }
 }
 </script>

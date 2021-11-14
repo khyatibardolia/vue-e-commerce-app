@@ -1,6 +1,7 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { SET_CART_ITEMS } from '@/store/mutation-types'
 import ProductModel from '@/interfaces/productModel'
+import { totalAmountFormatted } from '@/utils/fn-total-formatted'
 
 @Module({
   name: 'cart',
@@ -28,18 +29,7 @@ export default class loader extends VuexModule {
     return this.cart.length
   }
 
-  get cartTotalAmount (): string {
-    // eslint-disable-next-line camelcase
-    const total = this.cart.map(({ retail_price }) => retail_price.value)
-
-    return total.reduce((a, b) => a + b, 0).toFixed(2)
-  }
-
-  get cartTotalAmountFormatted (): string {
-    return `€ ${this.cartTotalAmount}`
-  }
-
   get totalPrice (): string {
-    return Number(this.cartTotalAmount) > 0 ? this.cartTotalAmountFormatted : ''
+    return totalAmountFormatted(this.cart)
   }
 }

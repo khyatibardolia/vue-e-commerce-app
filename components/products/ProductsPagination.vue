@@ -15,7 +15,7 @@
         <NuxtLink
           :to="`/products/${n}`"
           :class="['c-pagination__link',
-                   Number(n) === (slug || 1) ? '-isActive' : '']"
+                   Number(n) === Number($route.params.slug || 1) ? '-isActive' : '']"
           v-text="n"
         />
       </li>
@@ -33,14 +33,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import { productModule } from '@/utils/store-accessor'
 
 @Component
 export default class ProductsPagination extends Vue {
   private readonly productPerPage = 6;
   private pageNumbers: number = 0;
-  private slug: number = 0
 
   getPageNumbers () {
     if (productModule.productsCount > 0) {
@@ -49,35 +48,19 @@ export default class ProductsPagination extends Vue {
   }
 
   get prevPage (): number {
-    return this.slug > 1 ? Number(this.slug) - 1 : 1
-  }
-
-  @Watch('slug')
-  // call again the method if the route changes
-  private onSlugChange () {
-    this.getSlugValue()
+    return Number(this.$route.params.slug) > 1 ? Number(this.$route.params.slug) - 1 : 1
   }
 
   get nextPage (): number {
-    return this.slug < productModule.productsCount
-      ? this.slug + 1
-      : productModule.productsCount
-  }
+    const currentPage = Number(this.$route.params.slug)
 
-  getSlugValue (): void {
-    if (this.$route.params.slug !== undefined) {
-      this.slug = Number(this.$route.params.slug)
-    }
-  }
-
-  async getProductsCount () {
-    await productModule.getProductsCount()
-    this.getPageNumbers()
+    return currentPage < this.pageNumbers
+      ? currentPage + 1
+      : this.pageNumbers
   }
 
   mounted () : void {
-    this.getProductsCount()
-    this.getSlugValue()
+    this.getPageNumbers()
   }
 }
 </script>

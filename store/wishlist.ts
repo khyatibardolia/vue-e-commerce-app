@@ -1,6 +1,7 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 import { SET_WISHLIST_ITEMS } from '@/store/mutation-types'
 import ProductModel from '@/interfaces/productModel'
+import { totalAmountFormatted } from '@/utils/fn-total-formatted'
 
 @Module({
   name: 'wishlist',
@@ -28,18 +29,7 @@ export default class loader extends VuexModule {
     return (value: string) => this.wishlist.some(({ uuid }) => uuid === value)
   }
 
-  get wishlistTotalAmount (): string {
-    // eslint-disable-next-line camelcase
-    const total = this.wishlist.map(({ retail_price }) => retail_price.value)
-
-    return total.reduce((a, b) => a + b, 0).toFixed(2)
-  }
-
-  get wishlistTotalAmountFormatted (): string {
-    return `€ ${this.wishlistTotalAmount}`
-  }
-
   get totalPrice (): string {
-    return Number(this.wishlistTotalAmount) > 0 ? this.wishlistTotalAmountFormatted : ''
+    return totalAmountFormatted(this.wishlist)
   }
 }

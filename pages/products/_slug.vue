@@ -1,6 +1,6 @@
 <template>
   <div class="c-products">
-    <div v-if="products.length" class="c-products__list">
+    <div v-if="products.length && productsCount > 0" class="c-products__list">
       <div class="c-products__gridContainer">
         <div
           v-for="item in products"
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Vue } from 'nuxt-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 import { productModule } from '@/store'
 import ProductModel from '@/interfaces/productModel'
 
@@ -31,17 +31,22 @@ export default class ProductsList extends Vue {
     return productModule.products
   }
 
-  @Watch('$route')
-  // call again the method if the route changes
-  private onUrlChange () {
-    this.getProducts()
+  get productsCount () : number {
+    return productModule.productsCount
   }
 
   getProducts () {
-    if (this.$route.params.slug !== undefined) {
-      this.offset = (Number(this.$route.params.slug) - 1) * Number(this.pageLimit)
-    }
+    this.offset = (Number(this.$route.params.slug) - 1) * Number(this.pageLimit)
+
     productModule.getProducts({ limit: this.pageLimit, offset: this.offset })
+
+    if (!this.productsCount) {
+      this.getProductsCount()
+    }
+  }
+
+  async getProductsCount () {
+    await productModule.getProductsCount()
   }
 
   mounted () : void {

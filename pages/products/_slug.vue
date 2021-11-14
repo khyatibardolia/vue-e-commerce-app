@@ -39,7 +39,7 @@ export default class ProductsList extends Vue {
 
   getProducts () {
     if (this.$route.params.slug !== undefined) {
-      this.offset = Number(this.$route.params.slug) * Number(this.pageLimit)
+      this.offset = (Number(this.$route.params.slug) - 1) * Number(this.pageLimit)
     }
     productModule.getProducts({ limit: this.pageLimit, offset: this.offset })
   }

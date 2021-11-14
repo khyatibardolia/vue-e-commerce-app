@@ -49,7 +49,7 @@ export default class ProductsPagination extends Vue {
   }
 
   get prevPage (): number {
-    return this.slug !== 0 ? Number(this.slug) - 1 : 0
+    return this.slug > 1 ? Number(this.slug) - 1 : 1
   }
 
   @Watch('slug')

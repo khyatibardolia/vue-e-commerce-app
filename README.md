@@ -1,69 +1,82 @@
 # js_challenge_khyati-bardolia
 
-## Build Setup
+As a main goal I\'ve build a simple e-commerce application using the assets provided and added some of my own.
 
-```bash
-# install dependencies
-$ npm install
+## Technologies:
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+* NuxtJS
+* VueJS
+* TypeScript
+* Eslint
+* SCSS
+* Stylelint
+* Axios
+* Jest for Unit tests
+* Cypress for e2e tests
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Project setup with terminal
+### Note that all commands should be run in the root project folder.
 
-# generate static project
-$ npm run generate
+
+```
+// Clone project from Git
+HTTPS: https://github.com/khyatibardolia/js_challenge_khyati-bardolia.git
+SSH: git@github.com:khyatibardolia/js_challenge_khyati-bardolia.git
+
+// Move to project folder
+cd js_challenge_khyati-bardolia
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### install dependencies
+```
+npm install
+```
 
-## Special Directories
+### serve with hot reload at localhost:3000
+```
+npm run dev
+```
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+### build for production and launch server
+```
+npm run build
+npm run start
+```
 
-### `assets`
+### generate static project
+```
+npm run generate
+```
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+### Lints
+```
+npm run lint
+npm run lint:style
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+### Fix lints errors
+```
+npm run lint:fix
+npm run lint:style:fix
+```
 
-### `components`
+### Run tests
+```
+npm run test
+```
+### Launches the test runner for e2e testing with browser.
+```
+npm run cypress:open
+```
+## Main Goals
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+* Use TypeScript ✅
+* Develop a simple build system for application ✅
+* Develop the “Add/Remove to Bag” and “Add/Remove to Wishlist” actions which work on client side only. ✅
+* Develop a product listing pagination with 6 products per page. ✅
+* The bag in the header must be updated with the new quantities and the new total price. ✅
+* Build a mini-bag with convenient actions, coherent with design. Example of a mini-bag is included, BUT you must develop a mini-bag that’s coherent with the page’s design. ✅
+* Make the application responsive. ✅
+* Use CSS preprocessors. ✅
+* Use of linting tools. ✅
+* Unit testing. ✅

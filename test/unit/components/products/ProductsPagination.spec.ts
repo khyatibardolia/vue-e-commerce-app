@@ -24,7 +24,7 @@ describe('ProductsPagination.vue', () => {
 
     const wrapper = shallowMount(ProductsPagination,
       {
-        stubs: [ 'common-base-button', 'common-base-icon', 'NuxtLink' ],
+        stubs: [ 'common-base-icon', 'NuxtLink' ],
         store,
         localVue,
         router,
@@ -40,7 +40,7 @@ describe('ProductsPagination.vue', () => {
 
     const wrapper = shallowMount(ProductsPagination,
       {
-        stubs: [ 'common-base-button', 'common-base-icon', 'NuxtLink' ],
+        stubs: [ 'common-base-icon', 'NuxtLink' ],
         store,
         localVue,
         router,
@@ -55,7 +55,7 @@ describe('ProductsPagination.vue', () => {
     router.currentRoute.params.slug = 2
 
     const wrapper = shallowMount(ProductsPagination, {
-      stubs: [ 'common-base-button', 'common-base-icon', 'NuxtLink' ],
+      stubs: [ 'common-base-icon', 'NuxtLink' ],
       store,
       localVue,
       router,

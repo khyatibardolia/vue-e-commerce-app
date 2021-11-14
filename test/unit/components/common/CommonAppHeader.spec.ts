@@ -27,13 +27,22 @@ describe('CommonAppHeader.vue', () => {
   })
 
   test('This component is rendered correctly', () => {
-    const wrapper = shallowMount(CommonAppHeader, { store, localVue })
+    const wrapper = shallowMount(CommonAppHeader,
+      {
+        store,
+        localVue,
+        stubs: [ 'common-base-icon', 'NuxtLink' ],
+      })
 
     expect(wrapper.attributes('class')).toEqual('c-appHeader')
   })
 
   test('If there are items on cart show the count', async () => {
-    const wrapper = shallowMount(CommonAppHeader, { store, localVue })
+    const wrapper = shallowMount(CommonAppHeader, {
+      store,
+      localVue,
+      stubs: [ 'common-base-icon', 'NuxtLink' ],
+    })
     // Add one product to the Cart Store
 
     await store.commit(`cart/${SET_CART_ITEMS}`, [ product ])
@@ -46,7 +55,11 @@ describe('CommonAppHeader.vue', () => {
   })
 
   test('If there are items on wishlist show the count', async () => {
-    const wrapper = shallowMount(CommonAppHeader, { store, localVue })
+    const wrapper = shallowMount(CommonAppHeader, {
+      store,
+      localVue,
+      stubs: [ 'common-base-icon', 'NuxtLink' ],
+    })
     // Add one product to Wishlist
 
     await store.commit(`wishlist/${SET_WISHLIST_ITEMS}`, [ product ])

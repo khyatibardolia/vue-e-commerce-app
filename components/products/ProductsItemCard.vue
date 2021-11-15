@@ -10,7 +10,7 @@
         <common-base-button
           id="addToWishlistBtn"
           icon="wishlist"
-          :class="['c-productItems__wishlistBtn', toggleWishlist ? '-isSelected' : '']"
+          :class="['c-productItems__wishlistBtn', isOnWishList ? '-isSelected' : '']"
           @click.native="handleWishlist"
         />
       </figure>
@@ -51,8 +51,6 @@ import { cartModule, wishListModule } from '@/store'
 export default class extends Vue {
   @Prop({ type: Object, default: () => {} }) private readonly product: ProductModel | any
 
-  private toggleWishlist: boolean = false
-
   get isOnCart (): boolean {
     const { uuid } = this.product
 
@@ -71,7 +69,6 @@ export default class extends Vue {
   }
 
   handleWishlist () : void {
-    this.toggleWishlist = !this.toggleWishlist
     // Use the store to check if the item is on the wishlist
     const isOnWishlist = this.isOnWishList
 

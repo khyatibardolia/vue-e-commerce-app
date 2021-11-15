@@ -73,18 +73,18 @@ npm run cypress:open
 
 Deploy a create-nuxt-app into production with docker multi-stage build.
 
-### Build the Docker image:
+### Build the Docker image
 
 ```
 docker build -t js_challenge_khyati-bardolia .
 ```
-### To see the list images built in your system, run the following command:
+### See the list of images built in your system
 
 ```
 docker images
 ```
 
-### Run your application-container with:
+### Run your application-container
 
 ```
 docker run -p 8000:80 js_challenge_khyati-bardolia

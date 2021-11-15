@@ -21,4 +21,5 @@ module.exports = {
     '<rootDir>/pages/**/*.vue',
   ],
   testEnvironment: 'jsdom',
+  testPathIgnorePatterns: [ '<rootDir>/test/e2e' ],
 }

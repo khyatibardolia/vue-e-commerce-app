@@ -138,7 +138,8 @@ export default class extends Vue {
     font-weight: 600;
 
     &:first-child {
-      display: flex;
+      @include mx.d-flex();
+
       overflow: hidden;
 
       width: auto;
@@ -147,10 +148,6 @@ export default class extends Vue {
     &:not(:first-child) {
       text-align: center;
     }
-  }
-
-  &__details {
-    // width: 400px;
   }
 
   &__title {

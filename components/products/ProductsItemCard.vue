@@ -108,9 +108,10 @@ export default class extends Vue {
   }
 
   &__imgWrapper {
+    @include mx.d-flex();
+
     position: relative;
 
-    display: flex;
     overflow: hidden;
 
     width: 100%;
@@ -129,13 +130,11 @@ export default class extends Vue {
   }
 
   &__wishlistBtn {
+    @include mx.d-flex(center, center, false);
+
     position: absolute;
     top: 10px;
     right: 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     width: 35px;
     height: 35px;
@@ -171,9 +170,7 @@ export default class extends Vue {
   }
 
   &__details {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
+    @include mx.d-flex(center, center, true);
 
     padding: 10px 20px 20px;
 

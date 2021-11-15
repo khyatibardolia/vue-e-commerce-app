@@ -73,8 +73,7 @@ export default class ProductsPagination extends Vue {
   padding: 10px;
 
   &__ul {
-    display: flex;
-    justify-content: center;
+    @include mx.d-flex(center, center, false);
 
     margin: 0;
     padding: 0;
@@ -96,9 +95,7 @@ export default class ProductsPagination extends Vue {
   }
 
   &__link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mx.d-flex(center, center, false);
 
     width: 20px;
     height: 20px;

@@ -14,7 +14,7 @@
       <li v-for="n in pageNumbers" :key="n" class="c-pagination__item">
         <NuxtLink
           :to="`/products/${n}`"
-          :class="getClasses(n)"
+          :class="['c-pagination__link', isCurrentPage(n) ? '-isActive' : '']"
           v-text="n"
         />
       </li>
@@ -40,10 +40,10 @@ export default class ProductsPagination extends Vue {
   private readonly productPerPage = 6;
   private pageNumbers: number = 0;
 
-  getClasses (pageNumber: number) {
+  isCurrentPage (pageNumber: number) {
     const currentPage = Number(this.$route.params.slug)
 
-    return [ 'c-pagination__link', Number(pageNumber) === (currentPage || 1) ? '-isActive' : '' ]
+    return Number(pageNumber) === (currentPage || 1)
   }
 
   getPageNumbers () {

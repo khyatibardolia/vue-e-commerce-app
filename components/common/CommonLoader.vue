@@ -28,7 +28,7 @@ export default class extends Vue {}
     width: 100%;
     height: 100%;
 
-    background-color: rgba($color: #000000, $alpha: 0.3);
+    background-color: rgba(v.$secondary-color, 0.3);
 
     &__wrapper {
       position: absolute;
@@ -55,7 +55,7 @@ export default class extends Vue {}
       animation: loader 1s linear infinite;
 
       border-radius: 80px;
-      box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 1px 1px 2px 0 rgba(v.$secondary-color, 0.2);
     }
     @-webkit-keyframes loader {
       0% {

@@ -38,8 +38,8 @@ module.exports = {
     'linebreak-style': [ 'error', 'unix' ],
     'max-depth': [ 'error', 2 ],
     'max-len': [ 'error', {
-      code: 100,
-      comments: 100,
+      code: 120,
+      comments: 120,
       ignoreTrailingComments: true,
       ignoreStrings: true,
       ignoreTemplateLiterals: true,

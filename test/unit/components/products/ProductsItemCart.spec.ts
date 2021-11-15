@@ -45,20 +45,6 @@ describe('ProductsItemCard.vue', () => {
     expect(wrapper.attributes('class')).toEqual('c-productItems')
   })
 
-  test('component state renders correctly', () => {
-    const toggleWishlist:boolean = false
-
-    const wrapper = shallowMount(ProductsItemCard,
-      {
-        store,
-        localVue,
-        propsData: { product },
-        stubs: [ 'common-base-button' ],
-      })
-
-    expect(wrapper.vm.$data.toggleWishlist).toEqual(toggleWishlist)
-  })
-
   test('Add the product to the cart', () => {
     const wrapper = shallowMount(ProductsItemCard,
       {

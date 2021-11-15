@@ -1,7 +1,7 @@
 <template>
   <span v-bind="$attrs" class="c-baseIcon">
     <component
-      :is="getImage"
+      :is="require(`@/assets/svg-icons/${name}.svg`).default"
       :aria-labelledby="name"
       :height="size"
       :view-box="viewBox"
@@ -21,10 +21,6 @@ export default class extends Vue {
   @Prop({ type: String, default: '' }) private readonly color!: string
   @Prop({ type: String, default: '0 0 512 512' }) private readonly viewBox!: string
   @Prop({ type: [ Number, String ], default: 18 }) private readonly size!: string
-
-  get getImage () {
-    return require(`@/assets/svg-icons/${this.name}.svg`).default
-  }
 }
 </script>
 

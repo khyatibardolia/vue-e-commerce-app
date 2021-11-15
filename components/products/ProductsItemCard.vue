@@ -142,7 +142,9 @@ export default class extends Vue {
   }
 
   &::v-deep .c-productItems__wishlistBtn {
-    background: v.$light-color;
+    &:hover {
+      background: v.$light-color;
+    }
 
     .c-baseButton__icon {
       margin: 0;

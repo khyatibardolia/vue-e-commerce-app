@@ -1,6 +1,6 @@
 module.exports = {
   moduleNameMapper: {
-    '\\.(svg)$': '<rootDir>/test/unit/svgTransform.js',
+    '\\.(svg)$': '<rootDir>/test/tools/svgTransform.js',
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js',
